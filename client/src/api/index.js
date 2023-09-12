@@ -5,7 +5,7 @@ import axios from "axios";
 // URL that points to our backend route
 
 const API = axios.create({
-    baseURL: "https://filmopus-api.vercel.app",
+    baseURL: "https://filmopus-api.vercel.app/",
     headers: {
         "Content-Type": "application/json",
     },
