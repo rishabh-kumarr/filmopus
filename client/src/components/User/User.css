@@ -5,7 +5,8 @@
     padding: 10px;
     opacity: 0.9;
     border-radius: 20px;
-    background: #ccc;
+    border: 1px solid #ec0b0b;
+    background: #fff;
 }
 
 .loginpage {

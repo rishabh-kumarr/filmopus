@@ -4,8 +4,9 @@
     justify-content: space-between;
     border-radius: 15px;
     height: 100%;
-    background: #ccc;
+    border: 1px solid #3391ff;
     opacity: 0.9;
+    background: #fff;
     position: relative;
 }
 
