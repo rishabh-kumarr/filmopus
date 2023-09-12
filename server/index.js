@@ -12,20 +12,12 @@ import { config } from "./config/config.js";
 const app = express();
 
 // Properly send POST requests
-app.use(
-    cors({
-        origin: [config.clientURL, config.mobileClient],
-        credentials: true,
-    })
-);
+app.use(cors());
 
 // Content-Type - application/json
 app.use(express.json({ limit: "30mb", extended: true }));
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-
-// Parse Cookie
-app.use(cookieParser());
 
 // Middlewares
 // Using express middleware to connect the route to our app - Always use after cors
