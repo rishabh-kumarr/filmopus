@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;640;800;900&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Outfit", sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    color: rgb(202, 197, 190);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ebff33;
+}
+
+h2 {
+    color: #ebff33;
+}
+
+h3 {
+    color: #ecaa6c;
+}
+
+ul {
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+/* Main App */
+
+/* Home.css */
+
+/* Buttons and links */
+
+.btn a {
+    color: #fff;
+}
+
+.btn {
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background: #3391ff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-light {
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    min-width: 100%;
+    font-weight: 600;
+    padding: 2px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #ec0b0b;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #004daa;
+    color: #e8e6e3;
+    transition: 0.3s;
+}
+
+.btn-light:hover {
+    background: #701919;
+    color: #e8e6e3;
+    transition: 0.3s;
+}
+
+/* TextFields */
+
+input {
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 0.7rem;
+    color: gray;
+    transition: 0.1s ease-out;
+}
+
+input:focus {
+    border-color: #4490f5;
+}
+
+input:focus + label {
+    color: #000;
+    top: 0;
+    transform: translateY(-50%) scale(0.9) !important;
+}
+
+input:not(:placeholder-shown) + label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9) !important;
+}
+
+input:not(:focus)::placeholder {
+    opacity: 0;
+}
+
+label {
+    position: absolute;
+    font-size: 1rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: gray;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    transition: 0.1s ease-out;
+    transform-origin: left top;
+    pointer-events: none;
+}
+
+.input {
+    height: 100%;
+}
+
+.text {
+    position: relative;
+}
+
+.paginatearea {
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+@media screen and (max-width: 990px) {
+    body {
+        overflow-x: hidden;
+    }
+    .content {
+        display: flex;
+    }
+    .bg {
+        position: fixed;
+    }
+}

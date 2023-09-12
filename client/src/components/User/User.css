@@ -1,0 +1,120 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    opacity: 0.9;
+    border-radius: 20px;
+    background: #ccc;
+}
+
+.loginpage {
+    width: 100vw;
+    height: 100vh;
+}
+
+.loginpage .content {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+}
+
+.loginpage .bg {
+    height: 100vh;
+}
+
+.demo {
+    border: 1px solid #ecaa6c;
+    background: #fff;
+    padding: 10px;
+    text-align: justify;
+}
+
+.hidden {
+    display: none;
+}
+
+.demotitle {
+    text-align: center;
+}
+
+.or {
+    margin-top: 20px;
+}
+
+#signinForm {
+    width: 100%;
+}
+
+.submit {
+    margin: 10px;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px 20px;
+    background: #3391ff;
+    display: flex;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.new {
+    border-radius: 10px;
+}
+
+.switch {
+    background: #ec0b0b;
+    margin: 10px;
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.error {
+    border: 2px solid #ecaa6c;
+    border-radius: 10px;
+    background: #ec0b0b;
+    color: #fff;
+    font-weight: 500;
+}
+
+.textfield {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.right {
+    margin-right: 1px;
+}
+
+.input input {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    font-size: 1em;
+    color: inherit;
+    flex: auto 1 1;
+    width: 100%;
+    background-color: transparent;
+}
+
+.text {
+    border-radius: 5px;
+    background: #fff;
+    display: flex;
+    margin-right: 2px;
+}
+
+.input .icon {
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 640px) {
+    .login {
+        width: 90vw;
+    }
+}
