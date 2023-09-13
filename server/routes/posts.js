@@ -12,14 +12,14 @@ import {
     likePost,
 } from "../controllers/posts.js";
 
-import auth from "../middleware/auth.js"
+import auth from "../middleware/auth.js";
 
 // set up the router
 const router = express.Router();
 
 // Routes - path
-router.get("/creator", getPostsByCreator)
-router.get("/search", getPostsBySearch)
+router.get("/creator", getPostsByCreator);
+router.get("/search", getPostsBySearch);
 router.get("/", getPosts);
 router.get("/:id", getPost);
 

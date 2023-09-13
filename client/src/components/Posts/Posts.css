@@ -82,28 +82,3 @@
     padding: 15px;
     text-align: justify;
 }
-
-/* .posts {
-    margin-top: 90px;
-    gap: 2rem;
-    justify-content: space-around;
-    display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); */
-    /* grid-template-columns: auto auto; */
-    /* grid-auto-rows: auto; */
-    /* position: relative; */
-    /* padding: 10px; */
-/* } */ 
-
-/* .post {
-    flex: 1;
-} */
-
-@media screen and (max-width: 640px) {
-    /* .posts {
-        margin-top: 50px;
-        padding: 0;
-        gap: 1rem;
-        grid-template-columns: auto;
-    } */
-}

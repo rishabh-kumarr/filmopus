@@ -24,14 +24,14 @@ const Post = ({ post, setCurrentId }) => {
     const dispatch = useDispatch();
     // const navigate = useNavigate();
 
-    const userId = user?.result?._id;
-    const hasLiked = post.likes.find((like) => like === userId);
+    const userId = user?.result._id;
+    const hasLiked = post?.likes?.find((like) => like === userId);
 
     const handleLike = async () => {
         dispatch(likePost(post._id));
 
         if (hasLiked) {
-            setLikes(post.likes.filter((id) => id !== userId));
+            setLikes(post?.likes.filter((id) => id !== userId));
         } else {
             setLikes([...post.likes, userId]);
         }
@@ -42,7 +42,7 @@ const Post = ({ post, setCurrentId }) => {
             return likes.find((like) => like === userId) ? (
                 <>
                     <AiFillLike size={20} /> &nbsp;
-                    {post.likes.length > 2
+                    {post?.likes?.length > 2
                         ? `You and ${likes.length - 1} others`
                         : `${likes.length} Like${likes.length > 1 ? "s" : ""}`}
                 </>

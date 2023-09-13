@@ -18,9 +18,11 @@ import { BrowserRouter } from "react-router-dom";
 
 import { reducers } from "./reducers";
 
-const store = createStore(reducers, {}, compose(applyMiddleware(thunk)));
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
     <Provider store={store}>
         <BrowserRouter>
             <ErrorBoundary fallback={<ErrorPage />}>
