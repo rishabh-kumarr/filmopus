@@ -45,7 +45,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
         if (currentId == 0) {
             // We need to dispatch creation action
-            dispatch(
+            await dispatch(
                 createPost(
                     {
                         ...postData,
@@ -58,7 +58,7 @@ const Form = ({ currentId, setCurrentId }) => {
             clear();
         } else {
             // What to do if the currentId is not null - dispatch updatePost
-            dispatch(
+            await dispatch(
                 updatePost(currentId, {
                     ...postData,
                     name: user?.result?.name,
@@ -67,6 +67,7 @@ const Form = ({ currentId, setCurrentId }) => {
             // To clear the form after submit is clicked
             clear();
         }
+        await await window.location.reload();
     };
 
     const clear = () => {

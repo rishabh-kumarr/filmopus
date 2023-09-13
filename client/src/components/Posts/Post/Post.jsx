@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import {
     AiOutlineEdit,
     AiOutlineLike,
@@ -15,7 +16,6 @@ import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/posts";
 
 import "../Posts.css";
-import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const Post = ({ post, setCurrentId }) => {
@@ -24,7 +24,7 @@ const Post = ({ post, setCurrentId }) => {
     const dispatch = useDispatch();
     // const navigate = useNavigate();
 
-    const userId = user?.result._id;
+    const userId = user?.result?._id;
     const hasLiked = post?.likes?.find((like) => like === userId);
 
     const handleLike = async () => {
@@ -42,7 +42,7 @@ const Post = ({ post, setCurrentId }) => {
             return likes.find((like) => like === userId) ? (
                 <>
                     <AiFillLike size={20} /> &nbsp;
-                    {post?.likes?.length > 2
+                    {likes.length > 2
                         ? `You and ${likes.length - 1} others`
                         : `${likes.length} Like${likes.length > 1 ? "s" : ""}`}
                 </>
@@ -73,7 +73,7 @@ const Post = ({ post, setCurrentId }) => {
                 className="selectedFile"
             />
             <div className="infocard">
-                <h2>{post.name}</h2>
+                <h2 className="cardOwner">{post.name}</h2>
                 <p className="timeago">{moment(post.createdAt).fromNow()}</p>
             </div>
             {/* Used for Updating post */}
@@ -105,7 +105,7 @@ const Post = ({ post, setCurrentId }) => {
                 >
                     <Likes />
                 </button>
-                {user?.result._id === post?.creator && (
+                {user?.result?._id === post?.creator && (
                     <button
                         className="actionbtn"
                         onClick={() => dispatch(deletePost(post._id))}

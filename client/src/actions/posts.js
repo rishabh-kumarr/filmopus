@@ -17,16 +17,16 @@ import {
 // Need to use redux thunk(allows us extra arrow function and action needs to be dispatched now)
 export const getPosts = (page) => async (dispatch) => {
     try {
-        dispatch({ type: START_LOADING });
+        await dispatch({ type: START_LOADING });
         // Fetch all the data from the api (destructured response(data) - [all the posts] from api)
         const {
             data: { data, currentPage, numberOfPages },
         } = await api.fetchPosts(page);
-        dispatch({
+        await dispatch({
             type: FETCH_ALL,
             payload: { data, currentPage, numberOfPages },
         });
-        dispatch({ type: END_LOADING });
+        await dispatch({ type: END_LOADING });
         // Next step - Fetch posts from global state - Go to Posts/Posts.js
     } catch (error) {
         console.error(`Error: ${error}`);
@@ -36,11 +36,11 @@ export const getPosts = (page) => async (dispatch) => {
 // Redux thunk is used here(Action creator)
 export const getPost = (id) => async (dispatch) => {
     try {
-        dispatch({ type: START_LOADING });
+        await dispatch({ type: START_LOADING });
 
         const { data } = await api.fetchPost(id);
 
-        dispatch({ type: FETCH_POST, payload: { post: data } });
+        await dispatch({ type: FETCH_POST, payload: { post: data } });
     } catch (error) {
         console.error(`Error: ${error}`);
     }
@@ -48,13 +48,13 @@ export const getPost = (id) => async (dispatch) => {
 
 export const getPostsByCreator = (name) => async (dispatch) => {
     try {
-        dispatch({ type: START_LOADING });
+        await dispatch({ type: START_LOADING });
         const {
             data: { data },
         } = await api.fetchPostsByCreator(name);
 
-        dispatch({ type: FETCH_BY_CREATOR, payload: { data } });
-        dispatch({ type: END_LOADING });
+        await dispatch({ type: FETCH_BY_CREATOR, payload: { data } });
+        await dispatch({ type: END_LOADING });
     } catch (error) {
         console.error(`Error: ${error}`);
     }
@@ -62,13 +62,13 @@ export const getPostsByCreator = (name) => async (dispatch) => {
 
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
     try {
-        dispatch({ type: START_LOADING });
+        await dispatch({ type: START_LOADING });
         const {
             data: { data },
         } = await api.fetchPostsBySearch(searchQuery);
 
-        dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
-        dispatch({ type: END_LOADING });
+        await dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
+        await dispatch({ type: END_LOADING });
     } catch (error) {
         console.error(`Error: ${error}`);
     }
@@ -77,10 +77,10 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 // CREATE action for creating post
 export const createPost = (post, navigate) => async (dispatch) => {
     try {
-        dispatch({ type: START_LOADING });
+        await dispatch({ type: START_LOADING });
         // Fetch the data
         const { data } = await api.createPost(post);
-        dispatch({ type: CREATE, payload: data });
+        await dispatch({ type: CREATE, payload: data });
         // Next step - Dispatch action(useDispatch) - Go to Form/Form.js
         // navigate(`/posts/${data._id}`);
         navigate(`/posts`);
@@ -94,7 +94,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     try {
         // API request for updating the post - returns updated post - Get the data of updated post
         const { data } = await api.updatePost(id, post);
-        dispatch({ type: UPDATE, payload: data });
+        await dispatch({ type: UPDATE, payload: data });
     } catch (error) {
         console.error(`Error: ${error}`);
     }
@@ -105,7 +105,7 @@ export const deletePost = (id) => async (dispatch) => {
     try {
         // API request for deleting post - [response or (data)] is not reuired
         await await api.deletePost(id);
-        dispatch({ type: DELETE, payload: id });
+        await dispatch({ type: DELETE, payload: id });
     } catch (error) {
         console.error(`Error: ${error}`);
     }
@@ -118,7 +118,7 @@ export const likePost = (id) => async (dispatch) => {
     try {
         // API request for the particular post that needs updation in likes - Get data of updated post
         const { data } = await api.likePost(id, user?.token);
-        dispatch({ type: LIKE, payload: data });
+        await dispatch({ type: LIKE, payload: data });
     } catch (error) {
         console.error(`Error: ${error}`);
     }

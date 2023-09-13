@@ -26,6 +26,10 @@
     border-radius: 30px;
 }
 
+.cardOwner {
+    color: #ebff;
+}
+
 .timeago {
     color: #80f153;
 }

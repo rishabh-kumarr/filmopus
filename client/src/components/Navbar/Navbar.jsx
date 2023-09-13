@@ -24,20 +24,20 @@ const Navbar = () => {
     );
 
     // Logout
-    const logout = () => {
+    const logout = async () => {
         // Dispatch an action
-        dispatch({ type: LOGOUT });
+        await dispatch({ type: LOGOUT });
 
         // Redirect to main route
         navigate("/");
         setUser(null);
-        window.location.reload();
+        await window.location.reload();
     };
     // To not refresh in order to get user details after log in - As soon as URL changes(location)
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("profile")));
         window.addEventListener("scroll", changeColor);
-        
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 

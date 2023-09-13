@@ -206,6 +206,7 @@ const User = () => {
                                     onChange={handleChange}
                                     className="input-group"
                                     id="email"
+                                    required
                                 />
                                 <label htmlFor="email">Email Address</label>
                             </div>
