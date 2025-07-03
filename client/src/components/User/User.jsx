@@ -128,7 +128,7 @@ const User = () => {
       <div className="bg">
         <img src={loginScreen} alt="Please Log In" className="bgimg" />
       </div>
-      <div className="login content">
+      <div className={`login content ${!isSignUp ? "isSignIn" : ""}`}>
         <div className="lock">
           <AiFillLock size={20} />
         </div>

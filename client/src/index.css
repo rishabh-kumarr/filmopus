@@ -24,12 +24,8 @@ h2 {
 
 /* Links */
 a {
-  color: rgb(202, 197, 190);
-  text-decoration: none;
-}
-
-a:hover {
   color: #ebff33;
+  text-decoration: none;
 }
 
 /* Lists */
@@ -68,7 +64,7 @@ ul {
 
 .btn-light {
   background: #df5959;
-  border-radius: 5px;
+  border-radius: 50px;
   min-width: 100%;
   color: #fff;
   font-size: 1rem;
@@ -97,10 +93,11 @@ input {
   outline: none;
   padding: 1rem 0.7rem;
   transition: 0.1s ease-out;
+  width: 100%;
 }
 
 input:focus {
-  border-color: #d1e200;
+  border-color: #ebff33;
 }
 
 input:focus + label,
@@ -131,12 +128,13 @@ label {
 /* Utility Classes */
 .input {
   height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .text {
   position: relative;
 }
-
 
 /* SearchResult */
 
@@ -166,9 +164,8 @@ label {
 }
 
 .customPagination {
-  display: inline-flex !important;
-  flex-wrap: nowrap !important;     /* Prevents wrapping */
-  justify-content: flex-start;      /* Align items to start if scroll needed */
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.3rem;
   background: white;
@@ -176,8 +173,10 @@ label {
   padding: 10px 15px;
   border: 1px solid #ebff33;
   border-radius: 10px;
-  width: max-content;               /* Only take up as much width as needed */
-  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
 }
 
 /* Style each item (number) */
@@ -194,8 +193,8 @@ label {
 
 /* Hover effect */
 .custom-pagination-item:hover {
-  background-color: #d1e200 !important;
-  border-color: #ebff33 !important;
+  background-color: #ebff33 !important;
+  border-color: #d2d6b1 !important;
   color: #0f0f0f !important;
 }
 
@@ -203,10 +202,9 @@ label {
 .Mui-selected.custom-pagination-item {
   background-color: #ebff33 !important;
   color: #0f0f0f !important;
-  border-color: #d1e320 !important;
+  border-color: #ddd !important;
   font-weight: bold !important;
 }
-
 
 /* Responsive */
 @media screen and (max-width: 899px) {
@@ -220,5 +218,8 @@ label {
   }
   .formFirst {
     order: -1;
+  }
+  .loginpage {
+    min-height: 100vh;
   }
 }

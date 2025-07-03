@@ -1,21 +1,33 @@
-import { Pagination, PaginationItem, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Pagination, PaginationItem } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
 import { getPosts } from "../actions/posts";
-import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);
-  const dispatch = useDispatch();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (page) dispatch(getPosts(page));
   }, [dispatch, page]);
+
+  // Update window width on resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Dynamically determine sibling count
+  let siblingCount = 2;
+  if (windowWidth < 500) siblingCount = 0;
+  else if (windowWidth < 768) siblingCount = 1;
 
   return (
     <div className="paginationWrapper">
@@ -25,7 +37,7 @@ const Paginate = ({ page }) => {
         page={Number(page) || 1}
         variant="outlined"
         color="primary"
-        siblingCount={isSmallScreen ? 0 : 1}
+        siblingCount={siblingCount}
         boundaryCount={1}
         renderItem={(item) => (
           <PaginationItem

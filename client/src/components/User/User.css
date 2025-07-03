@@ -1,17 +1,16 @@
 /* Main container */
 .loginpage {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: #0f0f0f;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;
+  background-color: #f9f9f9;
   position: relative;
-  padding: 1rem;
 }
 
 .lock {
-    text-align: center;
+  text-align: center;
 }
 
 /* Login box */
@@ -39,17 +38,23 @@
 
 /* Demo Account Info */
 .demo {
+  text-align: center;
   font-size: 0.9rem;
   margin-bottom: 1.2rem;
   color: #ddd;
-  padding: 20px;
-  border: 1px solid #3a3939;
-  border-left: 3px solid #ebff33;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 .demo h4 strong {
-  color: #ffffff;
+  color: #d47a7a;
+}
+
+.demo {
+  display: none;
+}
+
+.isSignIn .demo {
+  display: block;
 }
 
 /* Form styling */
@@ -71,7 +76,6 @@
 .input-group {
   width: 100%;
   border: 1px solid #666;
-  border-radius: 8px;
   background: transparent;
   color: #fff;
   padding: 1rem;
@@ -93,6 +97,7 @@ label {
   background-color: transparent;
   transition: all 0.2s ease;
   pointer-events: none;
+  color: #ccc;
 }
 
 .input-group:focus + label,
