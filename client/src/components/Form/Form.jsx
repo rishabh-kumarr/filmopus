@@ -86,7 +86,7 @@ const Form = ({ currentId, setCurrentId }) => {
   if (!user?.result?.name) {
     return (
       <div className="paper inf">
-        <h4>Please Sign In to create your favorite cinema memories.</h4>
+        <h5>Please Sign In to create your favorite cinema memories.</h5>
       </div>
     );
   }
@@ -151,6 +151,19 @@ const Form = ({ currentId, setCurrentId }) => {
             value={postData.tags}
             onAddChip={(tag) => addTags(tag)}
             onDeleteChip={(tag) => removeTags(tag)}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#ebff33",
+                },
+                "&:hover fieldset": {
+                  borderColor: "#ebff33",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#ebff33",
+                },
+              },
+            }}
           />
         </div>
         <div>

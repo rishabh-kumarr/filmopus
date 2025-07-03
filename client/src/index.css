@@ -63,19 +63,19 @@ ul {
 }
 
 .btn-light {
-  background: #df5959;
+  background: #701919;
   border-radius: 50px;
   min-width: 100%;
   color: #fff;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 2px 15px;
+  padding: 5px;
   cursor: pointer;
 }
 
 .btn-light:hover {
-  background: #701919;
+  background: #490606;
   color: #e8e6e3;
   transition: 0.3s;
 }

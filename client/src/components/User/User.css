@@ -42,11 +42,12 @@
   font-size: 0.9rem;
   margin-bottom: 1.2rem;
   color: #ddd;
-  border-radius: 2px;
+  background: #0f0f0f;
+  padding: 8px;
 }
 
 .demo h4 strong {
-  color: #d47a7a;
+  color: #791919;
 }
 
 .demo {
@@ -97,7 +98,7 @@ label {
   background-color: transparent;
   transition: all 0.2s ease;
   pointer-events: none;
-  color: #ccc;
+  color: #aaa;
 }
 
 .input-group:focus + label,
@@ -147,7 +148,7 @@ label {
 }
 
 .switch.new:hover {
-  color: #ebff33;
+  color: #791919;
 }
 
 /* Name field split */

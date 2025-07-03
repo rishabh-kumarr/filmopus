@@ -47,15 +47,15 @@
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: 600;
-    padding: 2px 15px;
-    background: #df5959;
-    border-radius: 5px;
+    padding: 10px 20px;
+    background: #701919;
+    border-radius: 50px;
     cursor: pointer;
     border: none;
 }
 
 .auth:hover {
-    background: #701919;
+    background: #490606;
     color: #e8e6e3;
     transition: 0.3s;
 }

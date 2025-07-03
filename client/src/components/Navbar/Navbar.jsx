@@ -53,11 +53,10 @@ const Navbar = () => {
       <div className="header-right">
         {username ? (
           <>
-            <h3 className="mobilename">{username}</h3>
+            <h4 className="mobilename">{username}</h4>
             <div className="profile">
-              <div className="dropdown-menu"></div>
               <BiSolidUserCircle size={30} className="pic" />
-              <h3 className="name hide">{username}</h3>
+              <h4 className="name hide">{username}</h4>
               <button className="auth" onClick={logout}>
                 Log Out
               </button>
@@ -65,7 +64,6 @@ const Navbar = () => {
           </>
         ) : (
           <div className="nav">
-            {/* <Link to="/signin"> */}
               <button
                 className="btn"
                 type="button"
@@ -73,7 +71,6 @@ const Navbar = () => {
               >
                 Sign In
               </button>
-            {/* </Link> */}
           </div>
         )}
       </div>

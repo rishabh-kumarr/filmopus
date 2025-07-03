@@ -71,11 +71,16 @@
 
 .actionbtn {
     padding: 5px;
-    background: #df5959;
-    color: #0f0f0f;
+    background: #791919;
+    color: #fff;
     border: none;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.actionbtn:hover {
+    color: #e8e6e3;
+    transition: 0.3s;
 }
 
 .cardActions {

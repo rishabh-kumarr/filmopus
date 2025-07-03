@@ -1,4 +1,7 @@
 import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+
+import { toast } from "react-toastify";
 
 // Dispatching a action
 import { useDispatch } from "react-redux";
@@ -115,11 +118,19 @@ const User = () => {
     if (isSignUp) {
       // Sign Up the user - Dispatch an action - signup action
       // formData for database, navigate to navigate after
-      dispatch(signup(formData, navigate));
-      // }
+      dispatch(signup(formData))
+        .then(() => {
+          toast.success("Account created!");
+          navigate("/"); // Navigate only after success
+        })
+        .catch(() => toast.error("Signup failed! Try again."));
     } else {
-      // Sign In the user - Dispatch an action - signin action
-      dispatch(signin(formData, navigate));
+      dispatch(signin(formData))
+        .then(() => {
+          toast.success("Welcome back!");
+          navigate("/"); // Navigate only after success
+        })
+        .catch(() => toast.error("Invalid email or password"));
     }
   };
 
@@ -139,7 +150,9 @@ const User = () => {
         </h1>
 
         <div className="demo">
-          <h4><strong>Demo Account</strong></h4>
+          <h4>
+            <strong>Demo Account</strong>
+          </h4>
           <h6>Email: fincher@gmail.com</h6>
           <h6>Password: se7en</h6>
         </div>
