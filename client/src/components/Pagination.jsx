@@ -1,4 +1,4 @@
-import { Pagination, PaginationItem } from "@mui/material";
+import { Pagination, PaginationItem, useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ import { useEffect } from "react";
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   useEffect(() => {
     if (page) dispatch(getPosts(page));
@@ -23,6 +25,8 @@ const Paginate = ({ page }) => {
         page={Number(page) || 1}
         variant="outlined"
         color="primary"
+        siblingCount={isSmallScreen ? 0 : 1}
+        boundaryCount={1}
         renderItem={(item) => (
           <PaginationItem
             {...item}

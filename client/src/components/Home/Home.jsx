@@ -40,7 +40,7 @@ const Home = () => {
               justifyContent="space-between"
               alignItems="stretch"
               spacing={3}
-              className="mobile"
+              className="mainGrid"
             >
               <Grid item xs={12} sm={12} md={8}>
                 <Posts setCurrentId={setCurrentId} />

@@ -10,6 +10,7 @@
 
 body {
   overflow-x: hidden;
+  min-width: 375px;
 }
 
 body::-webkit-scrollbar {
@@ -165,13 +166,18 @@ label {
 }
 
 .customPagination {
-  border-radius: 10px;
-  margin-top: 10px;
-  padding: 15px;
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;     /* Prevents wrapping */
+  justify-content: flex-start;      /* Align items to start if scroll needed */
+  align-items: center;
+  gap: 0.3rem;
   background: white;
   opacity: 0.95;
+  padding: 10px 15px;
   border: 1px solid #ebff33;
-  width: 100%;
+  border-radius: 10px;
+  width: max-content;               /* Only take up as much width as needed */
+  min-width: 100%;
 }
 
 /* Style each item (number) */
@@ -182,32 +188,37 @@ label {
   margin: 0 6px;
   font-weight: bold;
   border: 1px solid #ccc !important;
-  color: #333 !important;
+  color: #0f0f0f !important;
   transition: all 0.3s ease;
 }
 
 /* Hover effect */
 .custom-pagination-item:hover {
-  background-color: #e6f0ff !important;
-  border-color: #3391ff !important;
-  color: #0074e4 !important;
+  background-color: #d1e200 !important;
+  border-color: #ebff33 !important;
+  color: #0f0f0f !important;
 }
 
 /* Active page */
 .Mui-selected.custom-pagination-item {
-  background-color: #3391ff !important;
-  color: white !important;
-  border-color: #3391ff !important;
+  background-color: #ebff33 !important;
+  color: #0f0f0f !important;
+  border-color: #d1e320 !important;
+  font-weight: bold !important;
 }
 
 
 /* Responsive */
-@media screen and (max-width: 990px) {
-  .content {
-    display: flex;
-  }
-
+@media screen and (max-width: 899px) {
   .bg {
     position: fixed;
+  }
+  .mainGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .formFirst {
+    order: -1;
   }
 }

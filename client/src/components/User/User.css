@@ -159,7 +159,7 @@ label {
 }
 
 /* Media Queries: Responsive Fixes */
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 900px) {
   .login.content {
     padding: 2rem 1.5rem;
     margin: 2rem 1rem;
