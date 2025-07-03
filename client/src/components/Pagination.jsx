@@ -8,29 +8,32 @@ import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const Paginate = ({ page }) => {
-    const { numberOfPages } = useSelector((state) => state.posts);
-    const dispatch = useDispatch();
+  const { numberOfPages } = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (page) dispatch(getPosts(page));
-    }, [dispatch, page]);
+  useEffect(() => {
+    if (page) dispatch(getPosts(page));
+  }, [dispatch, page]);
 
-    return (
-        <Pagination
-            className="ul paper paginatearea"
-            count={numberOfPages}
-            page={Number(page) || 1}
-            variant="outlined"
-            color="primary"
-            renderItem={(item) => (
-                <PaginationItem
-                    {...item}
-                    component={Link}
-                    to={`/posts?page=${item.page}`}
-                />
-            )}
-        />
-    );
+  return (
+    <div className="paginationWrapper">
+      <Pagination
+        className="customPagination"
+        count={numberOfPages}
+        page={Number(page) || 1}
+        variant="outlined"
+        color="primary"
+        renderItem={(item) => (
+          <PaginationItem
+            {...item}
+            component={Link}
+            to={`/posts?page=${item.page}`}
+            className="custom-pagination-item"
+          />
+        )}
+      />
+    </div>
+  );
 };
 
 export default Paginate;

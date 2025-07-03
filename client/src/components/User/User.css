@@ -1,121 +1,199 @@
-.login {
+/* Main container */
+.loginpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #0f0f0f;
+  position: relative;
+  padding: 1rem;
+}
+
+.lock {
+    text-align: center;
+}
+
+/* Login box */
+.login.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  color: #fff;
+}
+
+/* Title */
+.protitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #ebff33;
+}
+
+/* Demo Account Info */
+.demo {
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  color: #ddd;
+  padding: 20px;
+  border: 1px solid #3a3939;
+  border-left: 3px solid #ebff33;
+  border-radius: 10px;
+}
+
+.demo h4 strong {
+  color: #ffffff;
+}
+
+/* Form styling */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input + Label wrapper */
+.input.text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Actual input */
+.input-group {
+  width: 100%;
+  border: 1px solid #666;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-group:focus {
+  border-color: #ebff33;
+}
+
+/* Label animation */
+label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.input-group:focus + label,
+.input-group:not(:placeholder-shown) + label {
+  transform: translateY(-1.6rem) scale(0.85);
+  color: #000;
+  background-color: #e8f572;
+}
+
+/* Eye icon */
+.icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc;
+}
+
+/* Submit button */
+.btn.submit {
+  background: #ebff33;
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn.submit:hover {
+  background-color: #d1e200;
+}
+
+/* Toggle login/signup */
+.switch.new {
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.switch.new:hover {
+  color: #ebff33;
+}
+
+/* Name field split */
+.name-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Error message */
+.error {
+  color: #ff5e5e;
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+}
+
+/* Media Queries: Responsive Fixes */
+@media screen and (max-width: 990px) {
+  .login.content {
+    padding: 2rem 1.5rem;
+    margin: 2rem 1rem;
+    width: 100%;
+    max-width: 75vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    opacity: 0.9;
-    border-radius: 20px;
-    border: 1px solid #ec0b0b;
-    background: #fff;
-}
+  }
 
-.loginpage {
-    width: 100vw;
-    /* height: 100vh; */
-}
-
-.loginpage .content {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    text-align: center;
-}
-
-.loginpage .bg {
-    height: 100vh;
-}
-
-.demo {
-    border: 1px solid #ecaa6c;
-    background: #ecaa6c;
-    padding: 10px;
-    text-align: justify;
-}
-
-.hidden {
-    display: none;
-}
-
-.demotitle {
-    text-align: center;
-}
-
-.or {
-    margin-top: 20px;
-}
-
-#signinForm {
-    width: 100%;
-}
-
-.submit {
-    margin: 10px;
-    text-transform: uppercase;
-    border: none;
-    padding: 10px 20px;
-    background: #3391ff;
-    display: flex;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.new {
-    border-radius: 10px;
-}
-
-.switch {
-    background: #ec0b0b;
-    margin: 10px;
-    padding: 10px;
-    color: #fff;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.error {
-    border: 2px solid #ecaa6c;
-    border-radius: 10px;
-    background: #ec0b0b;
-    color: #fff;
-    font-weight: 500;
-}
-
-.textfield {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.right {
-    margin-right: 1px;
-}
-
-.input input {
-    outline: none;
-    border: none;
-    background: none;
-    padding: 0.5rem;
-    font-size: 1em;
-    color: inherit;
-    flex: auto 1 1;
-    width: 100%;
-    background-color: transparent;
-}
-
-.text {
-    border-radius: 5px;
-    background: #fff;
-    display: flex;
-    margin-right: 2px;
-}
-
-.input .icon {
-    padding: 10px;
-    cursor: pointer;
+  .name-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
 
 @media screen and (max-width: 640px) {
-    .login {
-        width: 90vw;
-    }
+  .loginpage {
+    padding: 1rem 0.5rem;
+  }
+
+  .login.content {
+    padding: 1.5rem 1rem;
+  }
+
+  .protitle {
+    font-size: 1.6rem;
+  }
+
+  .btn.submit {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .switch.new {
+    font-size: 0.85rem;
+  }
 }

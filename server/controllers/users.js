@@ -1,7 +1,4 @@
-// Hash the password
 import bcrypt from "bcryptjs";
-
-// Store users in browser for some period of time
 import jwt from "jsonwebtoken";
 
 import User from "../models/users.js";
@@ -14,7 +11,7 @@ export const signin = async (req, res) => {
 
     try {
         // We're signing in - that means the user exists
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ email: email.toLowerCase().trim() });
 
         // If user doesn't exists
         if (!existingUser) {
@@ -29,7 +26,7 @@ export const signin = async (req, res) => {
 
         // Password not correct
         if (!isPasswordCorrect) {
-            return res.status(400).json({ message: "Invalid Credentials!" });
+            return res.status(401).json({ message: "Invalid Credentials!" });
         }
 
         // If the user exists and the password is correct - create token for user - get jsonwebtoken - send to frontend
@@ -48,7 +45,7 @@ export const signin = async (req, res) => {
         res.status(200).json({ result: existingUser, token });
     } catch (error) {
         // If token creation was unsuccessfull
-        console.error(`Error7: ${error}`);
+        console.error(`Signin Error: ${error}`);
         res.status(500).json({ message: "Something went wrong!" });
     }
 };
@@ -59,8 +56,9 @@ export const signup = async (req, res) => {
     const { firstName, lastName, email, password, confirmPassword } = req.body;
 
     try {
+        const normalizedEmail = email.toLowerCase().trim();
         // Find if user already exists
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ email: normalizedEmail });
 
         // If user exists - can't sign up in that case
         if (existingUser) {
@@ -78,8 +76,8 @@ export const signup = async (req, res) => {
 
         // Create user
         const result = await User.create({
-            name: `${firstName} ${lastName}`,
-            email,
+            name: `${firstName.trim()} ${lastName.trim()}`,
+            email: normalizedEmail,
             password: hashedPassword,
         });
 
@@ -97,7 +95,7 @@ export const signup = async (req, res) => {
         res.status(201).json({ result, token });
     } catch (error) {
         // If token creation was unsuccessfull
+        console.error(`Signup Error: ${error}`);
         res.status(500).json({ message: "Something went wrong!" });
-        console.error(`Error8: ${error}`);
     }
 };

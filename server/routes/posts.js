@@ -17,21 +17,16 @@ import auth from "../middleware/auth.js";
 // set up the router
 const router = express.Router();
 
-// Routes - path
-router.get("/creator", getPostsByCreator);
-router.get("/search", getPostsBySearch);
-router.get("/", getPosts);
-router.get("/:id", getPost);
+// ==== READ ROUTES ====
+router.get("/", getPosts);                    // GET all posts
+router.get("/search", getPostsBySearch);     // GET posts by search query
+router.get("/creator", getPostsByCreator);   // GET posts by creator
+router.get("/:id", getPost);                 // GET a single post by ID
 
-router.post("/", auth, createPost);
-
-// patch - used for updating existing documents
-router.patch("/:id", auth, updatePost);
-
-// delete - used for removing a post
-router.delete("/:id", auth, deletePost);
-
-// Like logic - update action so patch
-router.patch("/:id/likePost", auth, likePost);
+// ==== WRITE ROUTES (Protected) ====
+router.post("/", auth, createPost);                    // Create new post
+router.patch("/:id", auth, updatePost);                // Update post
+router.delete("/:id", auth, deletePost);               // Delete post
+router.patch("/:id/likePost", auth, likePost);         // Like a post
 
 export default router;

@@ -16,53 +16,48 @@ const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [color, setColor] = useState(false);
-
     // User - retrieve the user from localStorage
-    const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("profile"))
-    );
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+    const [scrolled, setScrolled] = useState(false);
 
     // Logout
-    const logout = async () => {
+    const logout = () => {
         // Dispatch an action
-        await dispatch({ type: LOGOUT });
+        dispatch({ type: LOGOUT });
 
         // Redirect to main route
         navigate("/");
         setUser(null);
-        await window.location.reload();
     };
+
+    const handleScroll = () => {
+        setScrolled(window.scrollY >= 100);
+    };
+
     // To not refresh in order to get user details after log in - As soon as URL changes(location)
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("profile")));
-        window.addEventListener("scroll", changeColor);
+        window.addEventListener("scroll", handleScroll);
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [location]);
 
-    const changeColor = () => {
-        if (window.scrollY >= 100) {
-            setColor(true);
-        } else {
-            setColor(false);
-        }
-    };
+    const username = user?.result?.name;
 
     return (
-        <div className={color ? "header header-bg" : "header"}>
+        <div className={scrolled ? "header header-bg" : "header"}>
             <Link to="/">
                 <h1 className="protitle">FilmOpus.</h1>
             </Link>
 
             <div className="header-right">
-                {user?.result ? (
+                {username ? (
                     <>
-                        <h3 className="mobilename">{user?.result.name}</h3>
+                        <h3 className="mobilename">{username}</h3>
                         <div className="profile">
                             <div className="dropdown-menu"></div>
                             <BiSolidUserCircle size={30} className="pic" />
-                            <h3 className="name hide">{user?.result.name}</h3>
+                            <h3 className="name hide">{username}</h3>
                             <button className="auth" onClick={logout}>
                                 Log Out
                             </button>

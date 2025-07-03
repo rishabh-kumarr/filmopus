@@ -1,46 +1,52 @@
-/* Main Home */
-
+/* Home Layout */
 .app {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    position: relative;
     min-width: 320px;
-    position: absolute;
+    overflow-x: hidden;
 }
 
-.app .content {
+.content {
+    position: relative;
+    z-index: 2;
     margin-top: 8rem;
-    width: 100vw;
-    position: absolute;
-    top: 0px;
+    padding: 0 1rem;
+    width: 100%;
 }
 
-/* Background Images */
-
+/* Background Styling */
 .bg {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 140vh;
-    position: relative;
+    z-index: 0;
+    overflow: hidden;
 }
 
 .bgimg {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
     object-fit: cover;
+    background-position: center;
+    background-size: cover;
 }
 
 .bg::after {
     content: "";
-    width: 100%;
-    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    background: #000;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
     opacity: 0.8;
+    z-index: 1;
 }
 
+/* Search Section */
 .searchapp {
     display: flex;
     flex-direction: column;
@@ -48,9 +54,23 @@
     margin-bottom: 1rem;
 }
 
+/* Pagination container */
+.paginate {
+    margin-top: 1.5rem;
+}
+
+/* Mobile layout: reverse order */
 @media screen and (max-width: 990px) {
-    .content .mobile {
+    .mobile {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
+    }
+}
+
+/* Home.css */
+
+@media (max-width: 900px) {
+    .formFirst {
+        order: -1;
     }
 }

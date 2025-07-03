@@ -1,28 +1,27 @@
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 // Get the routes
 import postsRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 
+import connectDB from "./config/db.js";
 import { config } from "./config/config.js";
 
+dotenv.config();
 const app = express();
 
-// Properly send POST requests
+// Middlewares
 app.use(cors());
 
 // Content-Type - application/json
 app.use(express.json({ limit: "30mb", extended: true }));
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-// Middlewares
-// Using express middleware to connect the route to our app - Always use after cors
-app.use("/posts", postsRoutes); // localhost:5000/posts -> routes/posts.js
-// Using express middleware to connect the route to our app
-app.use("/user", userRoutes); // localhost:5000/user => routes/users.js
+// Routes
+app.use("/posts", postsRoutes);
+app.use("/user", userRoutes);
 
 // Backend is hosted at(API)
 app.get("/", (_, res) => {
@@ -30,28 +29,18 @@ app.get("/", (_, res) => {
 });
 
 const PORT = config.port || 5000;
-const db = config.mongoURL;
 
 // connect to database
-const connectDB = async () => {
-    try {
-        await mongoose
-            .connect(db, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-            })
-            .then(() =>
-                app.listen(PORT, () => {
-                    console.log(
-                        `Server Running on Port: http://localhost:${PORT}`
-                    );
-                })
-            )
-            .catch((error) => console.log(`${error} did not connect`));
-    } catch (error) {
-        console.error(`Error1: ${error}`);
-        process.exit(1);
-    }
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("❌ Server failed to start:", err);
+    process.exit(1);
+  }
 };
 
-connectDB();
+startServer();

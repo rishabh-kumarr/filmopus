@@ -8,26 +8,17 @@ const App = () => {
     const user = JSON.parse(localStorage.getItem("profile"));
 
     return (
-        <>
-            <Routes>
-                <Route
-                    path="/"
-                    exact
-                    element={<Navigate replace to="/posts" />}
-                />
-                <Route path="/posts" exact element={<Main />} />
-                <Route path="/posts/search" exact element={<Main />} />
-                <Route path="/creators/:name" element={<Search />} />
-                <Route path="/tags/:name" element={<Search />} />
-                <Route
-                    path="/signin"
-                    exact
-                    element={
-                        !user ? <Auth /> : <Navigate replace to="/posts" />
-                    }
-                />
-            </Routes>
-        </>
+        <Routes>
+            <Route path="/" element={<Navigate replace to="/posts" />} />
+            <Route path="/posts" element={<Main />} />
+            <Route path="/posts/search" element={<Main />} />
+            <Route path="/creators/:name" element={<Search />} />
+            <Route path="/tags/:name" element={<Search />} />
+            <Route
+                path="/signin"
+                element={!user ? <Auth /> : <Navigate replace to="/posts" />}
+            />
+        </Routes>
     );
 };
 

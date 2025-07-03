@@ -44,9 +44,10 @@
 .editbtn {
     background: none;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
+    background: #fff;
 }
 
 .details {
@@ -70,9 +71,10 @@
 
 .actionbtn {
     padding: 5px;
-    background: #f8668b;
+    background: #df5959;
+    color: #0f0f0f;
     border: none;
-    border-radius: 10px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
