@@ -34,7 +34,7 @@
   border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   max-width: 70%;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
@@ -49,11 +49,10 @@
 }
 
 .cardOwner {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #0f0f0f;
   margin: 0;
-  gap: 4px
 }
 
 .cardOwner.currentUser {
