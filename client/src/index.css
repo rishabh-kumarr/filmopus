@@ -96,10 +96,6 @@ input {
   width: 100%;
 }
 
-input:focus {
-  border-color: #ebff33;
-}
-
 input:focus + label,
 input:not(:placeholder-shown) + label {
   color: #000;
@@ -128,7 +124,7 @@ label {
 /* Utility Classes */
 .input {
   height: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #666;
   border-radius: 5px;
 }
 
@@ -168,7 +164,7 @@ label {
   align-items: center;
   gap: 0.2rem;
   padding: 5px 10px;
-  border: 1px solid #ebff33;
+  border: 1px solid #ddd;
   border-radius: 10px;
   width: 100%;
   background: white;
@@ -190,15 +186,15 @@ label {
 
 /* Hover effect */
 .custom-pagination-item:hover {
-  background-color: #ebff33 !important;
-  border-color: #d2d6b1 !important;
-  color: #0f0f0f !important;
+  background-color: #333 !important;
+  border-color: #ddd !important;
+  color: #ebff33 !important;
 }
 
 /* Active page */
 .Mui-selected.custom-pagination-item {
-  background-color: #ebff33 !important;
-  color: #0f0f0f !important;
+  background-color: #222 !important;
+  color: #ebff33 !important;
   border-color: #ddd !important;
   font-weight: bold !important;
 }

@@ -67,13 +67,13 @@ const SearchForm = ({ tags, setTags }) => {
         sx={{
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
-              borderColor: "#ebff33",
+              borderColor: "#555",
             },
             "&:hover fieldset": {
-              borderColor: "#ebff33",
+              borderColor: "#777",
             },
             "&.Mui-focused fieldset": {
-              borderColor: "#ebff33",
+              borderColor: "#777",
             },
           },
           "& label": {

@@ -1,92 +1,163 @@
+:root {
+  --brand-yellow: #ebff33;
+  --brand-red: #f44336;
+  --brand-darkred: #8b2323;
+  --brand-bg-dark: #1e1e1e;
+  --brand-white: #ffffff;
+  --brand-light-grey: #e8e6e3;
+}
+
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    height: 90px;
-    z-index: 10;
-    transition: 0.5s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  height: 90px;
+  z-index: 10;
+  transition: background 0.5s, box-shadow 0.5s;
+  background-color: transparent;
 }
 
 .header-bg {
-    background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.protitle{
-    padding: 10px;
-    font-weight: 600;
+.header h1 {
+  color: var(--brand-yellow);
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .profile {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
 }
 
-.name {
-    margin: 30px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    background: #ebff33;
-    border-radius: 50px;
-    color: #000;
-    font-weight: bold;
+.initials-circle {
+  background: var(--brand-yellow);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: filter 0.2s;
 }
 
-.pic {
-    border-radius: 50%;
-    max-height: 50px;
-    background: #ebff33;
+.initials-circle:hover {
+  filter: brightness(90%);
+}
+
+.dropdown {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background-color: var(--brand-bg-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+  min-width: 160px;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.dropdown-username {
+  font-weight: 700;
+  color: var(--brand-yellow);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.dropdown-logout {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--brand-red);
+  color: var(--brand-white);
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.dropdown-logout:hover {
+  background-color: var(--brand-darkred);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .auth {
-    color: #fff;
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    padding: 10px 20px;
-    background: #f44336;
-    border-radius: 50px;
-    cursor: pointer;
-    border: none;
+  color: var(--brand-white);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px 20px;
+  background: var(--brand-red);
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .auth:hover {
-    background: #8b2323;
-    color: #e8e6e3;
-    transition: 0.3s;
+  background: var(--brand-darkred);
+  color: var(--brand-light-grey);
 }
 
-.mobilename {
-    display: none;
-}
-
+/* ========== RESPONSIVENESS ========== */
 @media screen and (max-width: 590px) {
-    .header {
-        background: rgba(0, 0, 0, 0.85);
-    }
+  .header {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.85);
+  }
 
-    .name {
-        display: none;
-    }
+  .dropdown {
+    top: 60px;
+    right: 0;
+    min-width: 140px;
+    padding: 0.75rem;
+  }
 
-    .protitle {
-        margin-top: 5px;
-    }
+  .dropdown-logout {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
 
-    .pic {
-        height: 30px;
-    }
+  .dropdown-username {
+    font-size: 0.85rem;
+  }
 
-    .auth {
-        margin-left: 12px;
-    }
+  .pic {
+    height: 30px;
+    max-height: 30px;
+  }
 
-    .mobilename {
-        display: block;
-        color: #ebff33;
-    }
+  .auth {
+    margin-left: 10px;
+  }
 }

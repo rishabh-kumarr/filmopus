@@ -42,7 +42,10 @@
   font-size: 0.9rem;
   margin-bottom: 1.2rem;
   color: #ddd;
-  background: #0f0f0f;
+  border: 1px solid #ebff33;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-radius: 90px;
   padding: 8px;
 }
 
@@ -76,7 +79,7 @@
 /* Actual input */
 .input-group {
   width: 100%;
-  border: 1px solid #666;
+  border: none;
   background: transparent;
   color: #fff;
   padding: 1rem;
@@ -105,7 +108,7 @@ label {
 .input-group:not(:placeholder-shown) + label {
   transform: translateY(-1.6rem) scale(0.85);
   color: #000;
-  background-color: #e8f572;
+  background-color: #ebff33;
 }
 
 /* Eye icon */
@@ -170,7 +173,7 @@ label {
     padding: 2rem 1.5rem;
     margin: 2rem 1rem;
     width: 100%;
-    max-width: 75vw;
+    /* max-width: 75vw; */
     display: flex;
     flex-direction: column;
   }
@@ -201,5 +204,15 @@ label {
 
   .switch.new {
     font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 522px) {
+  .demo {
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid #ebff33;
+    border-bottom: 1px solid #ebff33;
   }
 }

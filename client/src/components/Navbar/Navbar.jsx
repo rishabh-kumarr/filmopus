@@ -7,8 +7,6 @@ import { useDispatch } from "react-redux";
 // Get the actionType LOGOUT
 import { LOGOUT } from "../../constants/actionTypes";
 
-import { BiSolidUserCircle } from "react-icons/bi";
-
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -19,6 +17,8 @@ const Navbar = () => {
   // User - retrieve the user from localStorage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [scrolled, setScrolled] = useState(false);
+
+  const [showDropdown, setShowDropdown] = useState(false);
 
   // Logout
   const logout = () => {
@@ -44,6 +44,17 @@ const Navbar = () => {
 
   const username = user?.result?.name;
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(".profile")) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className={scrolled ? "header header-bg" : "header"}>
       <Link to="/">
@@ -53,24 +64,41 @@ const Navbar = () => {
       <div className="header-right">
         {username ? (
           <>
-            <h4 className="mobilename">{username}</h4>
-            <div className="profile">
-              <BiSolidUserCircle size={30} className="pic" />
-              <h4 className="name hide">{username}</h4>
-              <button className="auth" onClick={logout}>
-                Log Out
-              </button>
+            <div
+              className="profile"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+              {username && (
+                <div className="initials-circle">
+                  {username
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase()}
+                </div>
+              )}
+
+              {/* Dropdown */}
+              {showDropdown && (
+                <div className="dropdown">
+                  <p className="dropdown-username">{username}</p>
+                  <button className="dropdown-logout" onClick={logout}>
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </>
         ) : (
           <div className="nav">
-              <button
-                className="btn"
-                type="button"
-                onClick={() => navigate("/signin")}
-              >
-                Sign In
-              </button>
+            <button
+              className="auth"
+              type="button"
+              onClick={() => navigate("/signin")}
+            >
+              Sign In
+            </button>
           </div>
         )}
       </div>
