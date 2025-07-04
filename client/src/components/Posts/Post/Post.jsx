@@ -48,7 +48,7 @@ const Post = ({
     if (likes.length > 0) {
       return hasLiked ? (
         <>
-          <AiFillHeart size={22} color="#e63946" />
+          <AiFillHeart size={20} color="#e63946" />
           &nbsp;
           {likes.length > 2
             ? `You and ${likes.length - 1} others`
@@ -56,7 +56,7 @@ const Post = ({
         </>
       ) : (
         <>
-          <AiOutlineHeart size={22} />
+          <AiOutlineHeart size={20} />
           &nbsp;
           {likes.length}
         </>
@@ -65,8 +65,7 @@ const Post = ({
 
     return (
       <>
-        <AiOutlineHeart size={22} />
-        &nbsp;Love
+        <AiOutlineHeart size={20} />
       </>
     );
   };
@@ -99,18 +98,17 @@ const Post = ({
         className="selectedFile"
         style={{ backgroundImage: `url(${post.selectedFile})` }}
       />
-      <div className="infocard">
-        {post.name === user?.result?.name ? (
-          <>
-            <span className="userIcon">🟢</span>
-            <h4 className="cardOwner currentUser">{post.name}</h4>
-          </>
-        ) : (
-          <>
-            <span className="userIcon">👤</span>
-            <h4 className="cardOwner">{post.name}</h4>
-          </>
-        )}
+      <div
+        className={`infocard ${
+          post.name === user?.result?.name ? "currentUser" : ""
+        }`}
+      >
+        <div className={`cardOwner`}>
+          <span className="userIcon">
+            {post.name === user?.result?.name ? "🟢" : "👤"}
+          </span>
+          <span>{post.name}</span>
+        </div>
         <p className="timeago">{moment(post.createdAt).fromNow()}</p>
       </div>
       {/* Used for Updating post */}
@@ -124,7 +122,7 @@ const Post = ({
               setCurrentId(post._id);
             }}
           >
-            <AiOutlineEdit />
+            <AiOutlineEdit size={18} />
           </button>
         </div>
       )}

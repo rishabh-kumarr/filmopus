@@ -6,8 +6,10 @@ import Main from "./routes/Main";
 import Auth from "./routes/Auth";
 import Search from "./routes/Search";
 
+import { useSelector } from "react-redux";
+
 const App = () => {
-  const user = JSON.parse(localStorage.getItem("profile"));
+  const { authData } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -19,7 +21,7 @@ const App = () => {
         <Route path="/tags/:name" element={<Search />} />
         <Route
           path="/signin"
-          element={!user ? <Auth /> : <Navigate replace to="/posts" />}
+          element={!authData ? <Auth /> : <Navigate replace to="/posts" />}
         />
       </Routes>
       <ToastContainer

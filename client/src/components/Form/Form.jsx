@@ -52,14 +52,18 @@ const Form = ({ currentId, setCurrentId }) => {
       name: user?.result?.name,
     };
 
-    if (currentId === 0) {
-      // We need to dispatch creation action
-      await dispatch(createPost(updatedPost, navigate));
-    } else {
-      // What to do if the currentId is not null - dispatch updatePost
-      await dispatch(updatePost(currentId, updatedPost));
+    try {
+      if (!currentId) {
+        // We need to dispatch creation action
+        await dispatch(createPost(updatedPost, navigate));
+      } else {
+        // What to do if the currentId is not null - dispatch updatePost
+        await dispatch(updatePost(currentId, updatedPost));
+      }
+      clear();
+    } catch (error) {
+      console.error("Error while submitting the form:", error);
     }
-    clear();
   };
 
   const clear = () => {

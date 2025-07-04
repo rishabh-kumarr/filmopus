@@ -90,6 +90,17 @@
   transform: scale(1.03);
 }
 
+.infocard.currentUser {
+  background: linear-gradient(
+    135deg,
+    rgba(204, 255, 204, 0.8),
+    rgba(240, 255, 240, 0.4)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 8px rgba(0, 128, 0, 0.15);
+  border: 1px solid rgba(0, 128, 0, 0.2);
+}
+
 .timeago {
   font-size: 0.75rem;
   color: #0f0f0f;
@@ -104,22 +115,22 @@
 }
 
 .editbtn {
-  background: rgba(255, 255, 255, 0.7);
+  background: #ffffffcc;
   border: none;
-  padding: 6px 7px;
-  border-radius: 10px;
+  border-radius: 50%;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  color: #333;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
 }
 
 .editbtn:hover {
-  background-color: #ebff33;
-  color: #000;
-  transform: scale(1.1);
+  background: #f0f0f0;
+  transform: scale(1.05);
 }
-
 
 .details {
   color: #f44336;
