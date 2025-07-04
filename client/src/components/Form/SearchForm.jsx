@@ -62,8 +62,34 @@ const SearchForm = ({ tags, setTags }) => {
         value={tags}
         onAddChip={(tag) => addTag(tag)}
         onDeleteChip={(tag) => removeTag(tag)}
-        label="Search Tags"
+        label="Search Tags (Press Enter to add)"
         variant="outlined"
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "#ebff33",
+            },
+            "&:hover fieldset": {
+              borderColor: "#ebff33",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#ebff33",
+            },
+          },
+          "& label": {
+            color: "#0f0f0f", // base label color
+            backgroundColor: "transparent",
+            padding: "0 4px",
+          },
+          "& label.Mui-focused": {
+            backgroundColor: "#ebff33",
+            color: "#0f0f0f",
+          },
+          "& label.MuiInputLabel-shrink": {
+            backgroundColor: "#ebff33",
+            color: "#0f0f0f",
+          },
+        }}
       />
       <button className="btn" onClick={searchPost}>
         Search

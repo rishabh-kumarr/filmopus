@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import {
   AiOutlineEdit,
-  AiOutlineLike,
-  AiFillLike,
+  AiFillHeart,
+  AiOutlineHeart,
   AiOutlineDelete,
 } from "react-icons/ai";
 
@@ -46,32 +46,36 @@ const Post = ({
 
   const Likes = () => {
     if (likes.length > 0) {
-      return likes.find((like) => like === userId) ? (
+      return hasLiked ? (
         <>
-          <AiFillLike size={20} /> &nbsp;
+          <AiFillHeart size={22} color="#e63946" />
+          &nbsp;
           {likes.length > 2
             ? `You and ${likes.length - 1} others`
-            : `${likes.length} Like${likes.length > 1 ? "s" : ""}`}
+            : `${likes.length}`}
         </>
       ) : (
         <>
-          <AiOutlineLike size={25} /> &nbsp;
-          {likes.length}&nbsp;
-          {likes.length === 1 ? "Like" : "Likes"}
+          <AiOutlineHeart size={22} />
+          &nbsp;
+          {likes.length}
         </>
       );
     }
 
     return (
       <>
-        <AiOutlineLike size={25} />
-        &nbsp;Like
+        <AiOutlineHeart size={22} />
+        &nbsp;Love
       </>
     );
   };
 
-  const handleDelete = async () => {
-    await dispatch(deletePost(post._id));
+  const handleDelete = async (e) => {
+    e.stopPropagation(); // Prevent triggering the card click event
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      await dispatch(deletePost(post._id));
+    }
 
     const isLastItemOnPage = totalPosts === 1;
 
@@ -96,7 +100,17 @@ const Post = ({
         style={{ backgroundImage: `url(${post.selectedFile})` }}
       />
       <div className="infocard">
-        <h4 className="cardOwner">{post.name}</h4>
+        {post.name === user?.result?.name ? (
+          <>
+            <span className="userIcon">🟢</span>
+            <h4 className="cardOwner currentUser">{post.name}</h4>
+          </>
+        ) : (
+          <>
+            <span className="userIcon">👤</span>
+            <h4 className="cardOwner">{post.name}</h4>
+          </>
+        )}
         <p className="timeago">{moment(post.createdAt).fromNow()}</p>
       </div>
       {/* Used for Updating post */}
@@ -104,12 +118,13 @@ const Post = ({
         <div className="edit">
           <button
             className="editbtn"
+            title="Edit post"
             onClick={(e) => {
               e.stopPropagation();
               setCurrentId(post._id);
             }}
           >
-            <AiOutlineEdit size={25} />
+            <AiOutlineEdit />
           </button>
         </div>
       )}
@@ -126,15 +141,16 @@ const Post = ({
 
       <div className="cardActions">
         <button
-          className="smallbtn"
+          className="actionbtn love"
           onClick={handleLike}
           disabled={!user?.result}
         >
           <Likes />
         </button>
+
         {userId === post?.creator && (
-          <button className="actionbtn" onClick={handleDelete}>
-            <AiOutlineDelete size={25} />
+          <button className="actionbtn delete" onClick={handleDelete}>
+            <AiOutlineDelete />
           </button>
         )}
       </div>

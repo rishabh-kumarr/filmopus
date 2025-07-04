@@ -63,7 +63,7 @@ ul {
 }
 
 .btn-light {
-  background: #701919;
+  background: #f44336;
   border-radius: 50px;
   min-width: 100%;
   color: #fff;
@@ -75,7 +75,7 @@ ul {
 }
 
 .btn-light:hover {
-  background: #490606;
+  background: #8b2323;
   color: #e8e6e3;
   transition: 0.3s;
 }
@@ -150,13 +150,11 @@ label {
 
 .paginationWrapper {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 1rem 0;
-  scroll-behavior: smooth;
+  /* flex-wrap: wrap; */
 }
 
 .paginationWrapper::-webkit-scrollbar {
@@ -165,30 +163,29 @@ label {
 
 .customPagination {
   display: flex;
+  /* flex-wrap: wrap;  */
   justify-content: center;
   align-items: center;
-  gap: 0.3rem;
-  background: white;
-  opacity: 0.95;
-  padding: 10px 15px;
+  gap: 0.2rem;
+  padding: 5px 10px;
   border: 1px solid #ebff33;
   border-radius: 10px;
   width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  flex-wrap: nowrap;
+  background: white;
+  opacity: 0.95;
 }
 
 /* Style each item (number) */
 .custom-pagination-item {
   border-radius: 20px !important;
-  min-width: 42px;
-  height: 42px;
-  margin: 0 6px;
+  min-width: 24px;
+  height: 24px;
   font-weight: bold;
   border: 1px solid #ccc !important;
   color: #0f0f0f !important;
   transition: all 0.3s ease;
+  font-size: 0.5rem;
+  margin: 2px;
 }
 
 /* Hover effect */
@@ -207,7 +204,7 @@ label {
 }
 
 /* Responsive */
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 1199px) {
   .bg {
     position: fixed;
   }

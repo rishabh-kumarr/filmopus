@@ -1,95 +1,209 @@
 .cardpost {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 15px;
-    height: 100%;
-    border: 1px solid #ebff33;
-    opacity: 0.9;
-    background: #fff;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  height: 100%;
+  border: 1px solid #ebff33;
+  opacity: 0.9;
+  background: #fff;
+  position: relative;
 }
 
 .selectedFile {
-    height: 0;
-    padding-top: 56.25%;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.5);
-    background-blend-mode: darken;
-    background-size: cover;
+  height: 0;
+  padding-top: 56.25%;
+  border-radius: 15px;
+  border-bottom: 10px solid #ebff33;
+  background: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+  background-size: cover;
 }
 
+/* .infocard {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(to right, rgba(235, 255, 51, 0.8), rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 20px;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  z-index: 2;
+  max-width: 70%;
+  color: #0f0f0f;
+} */
+
 .infocard {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    border-radius: 30px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.4)
+  );
+  backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 70%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.infocard:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.userIcon {
+  font-size: 1rem;
 }
 
 .cardOwner {
-    color: #ebff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f0f0f;
+  margin: 0;
+}
+
+.cardOwner.currentUser {
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: linear-gradient(to right, #fdfdfd, #eaeaea);
+  color: #0f0f0f;
+  box-shadow: 0 0 8px rgba(220, 220, 220, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.cardOwner.currentUser:hover {
+  box-shadow: 0 0 16px rgba(220, 220, 220, 0.7), 0 0 6px rgba(0, 0, 0, 0.1);
+  transform: scale(1.03);
 }
 
 .timeago {
-    color: #ddec86;
+  font-size: 0.75rem;
+  color: #0f0f0f;
+  margin: 0;
 }
 
 .edit {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
 }
 
 .editbtn {
-    background: none;
-    padding: 5px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    background: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 6px 7px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+.editbtn:hover {
+  background-color: #ebff33;
+  color: #000;
+  transform: scale(1.1);
+}
+
+
 .details {
-    color: #f15353;
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
+  color: #f44336;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
 }
 
 .cardtitle {
-    padding: 0 16px;
+  padding: 0 16px;
 }
 
-.smallbtn {
-    padding: 5px 10px;
-    background: #9fabf0;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.actionbtn {
-    padding: 5px;
-    background: #791919;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.actionbtn:hover {
-    color: #e8e6e3;
-    transition: 0.3s;
-}
-
+/* Bottom action buttons container */
 .cardActions {
-    padding: 0 12px 12px 12px;
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/* Common styles */
+.actionbtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+/* Love button */
+.actionbtn.love {
+  background-color: #ffdae0;
+  color: #c62828;
+}
+
+.actionbtn.love:hover {
+  background-color: #ffcdd2;
+}
+
+/* Delete button */
+.actionbtn.delete {
+  background-color: #fdecea;
+  color: #b71c1c;
+}
+
+.actionbtn.delete:hover {
+  background-color: #f8cfcf;
+}
+
+/* Icon sizing */
+.actionbtn svg {
+  width: 18px;
+  height: 18px;
 }
 
 .cardContent {
-    padding: 15px;
-    text-align: justify;
+  padding: 15px;
+  text-align: justify;
+}
+
+@media screen and (max-width: 600px) {
+  .infocard {
+    max-width: 90%;
+    padding: 6px 10px;
+  }
+
+  .cardOwner {
+    font-size: 0.85rem;
+  }
+
+  .timeago {
+    font-size: 0.7rem;
+  }
+
+  .editbtn {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
 }

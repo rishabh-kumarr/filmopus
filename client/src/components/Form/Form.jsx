@@ -163,6 +163,19 @@ const Form = ({ currentId, setCurrentId }) => {
                   borderColor: "#ebff33",
                 },
               },
+              "& label": {
+                color: "#0f0f0f", // base label color
+                backgroundColor: "transparent",
+                padding: "0 4px",
+              },
+              "& label.Mui-focused": {
+                backgroundColor: "#ebff33",
+                color: "#0f0f0f",
+              },
+              "& label.MuiInputLabel-shrink": {
+                backgroundColor: "#ebff33",
+                color: "#0f0f0f",
+              },
             }}
           />
         </div>

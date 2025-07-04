@@ -39,13 +39,13 @@ const Home = () => {
               container
               justifyContent="space-between"
               alignItems="stretch"
-              spacing={3}
+              spacing={2}
               className="mainGrid"
             >
-              <Grid item xs={12} sm={12} md={8}>
+              <Grid item xs={12} sm={12} md={12} lg={8}>
                 <Posts setCurrentId={setCurrentId} />
               </Grid>
-              <Grid item xs={12} sm={12} md={4} className="formFirst">
+              <Grid item xs={12} sm={12} md={12} lg={4} className="formFirst">
                 <SearchForm tags={tags} setTags={setTags} />
 
                 <Form currentId={currentId} setCurrentId={setCurrentId} />

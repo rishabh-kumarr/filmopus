@@ -47,7 +47,7 @@
 }
 
 .demo h4 strong {
-  color: #791919;
+  color: #f44336;
 }
 
 .demo {
@@ -148,7 +148,7 @@ label {
 }
 
 .switch.new:hover {
-  color: #791919;
+  color: #f44336;
 }
 
 /* Name field split */
@@ -159,7 +159,7 @@ label {
 
 /* Error message */
 .error {
-  color: #ff5e5e;
+  color: #f44336;
   font-size: 0.85rem;
   margin-top: -0.5rem;
 }

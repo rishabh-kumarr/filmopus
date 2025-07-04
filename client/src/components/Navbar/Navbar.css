@@ -48,14 +48,14 @@
     text-transform: uppercase;
     font-weight: 600;
     padding: 10px 20px;
-    background: #701919;
+    background: #f44336;
     border-radius: 50px;
     cursor: pointer;
     border: none;
 }
 
 .auth:hover {
-    background: #490606;
+    background: #8b2323;
     color: #e8e6e3;
     transition: 0.3s;
 }

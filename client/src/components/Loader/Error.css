@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: #282c34;
+    background-color: #0f0f0f;
     min-height: 100vh;
-    color: white;
+    color: #ddd;
     font-size: calc(10px + 2vmin);
 }
